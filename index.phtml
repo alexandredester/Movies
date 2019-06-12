@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>PHP</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="css/movies.css">
+</head>
+<body>
+    <h1></h1>
+
+    <ul class="movie-list">
+        <?php foreach($movies as $movie): ?>
+            <li>
+                <img src="images/<?= $covers[$movie['cover']] ?>">
+                <p>
+                    <strong><?= $movie['title'] ?></strong> -
+                    <em><?= convertDuration($movie['duration']) ?></em>
+                </p>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
+    <hr>
+    <h2>Recherche par durée maximum d'un film</h2>
+    <form class="standard-form" method="POST" action="search-duration.php">
+        <ul>
+            <li>
+                <label for="duration">Durée en minutes :</label>
+                <input type="text" id="duration" name="duration">
+            </li>
+            <li>
+                <input type="submit" value="Rechercher">
+            </li>
+        </ul>
+    </form>
+</body>
+</html>
